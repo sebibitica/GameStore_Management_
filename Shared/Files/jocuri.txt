@@ -1,0 +1,10 @@
+9
+1 GTA_V Amazing_Games 123 456 123
+2 Mortal_Kombat Kombat_Games 200 12 170
+3 Assasins_Creed Amazing_Games 35.99 6 10
+4 The_Last_of_Us Adventure_Games 170 56 190
+5 CS:GO Shooter_Games 90 45 99
+6 Flappy_Bird Easy_Games 30 1 300
+7 League_Of_Legends Amazing_Games 0 25 100022333
+8 Dota Adventure_Games 0 20 9999
+9 Doodle_Jump Easy_Games 25 0.5 256
