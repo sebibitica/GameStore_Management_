@@ -247,14 +247,6 @@ int Consola::get_nr_jocuri_instalate()
     return nr_jocuri_instalate;
 }
 
-void Consola::cumparare_bundle(Bundle &bundle)
-{
-    for (int i = 0; i < bundle.getNumarJocuri(); i++)
-    {
-        cumparare_joc(*bundle.getJocuri()[i]);
-    }
-}
-
 int Consola::cautare_joc_cumparat(string id)
 {
     for (int i = 0; i < nr_jocuri_cumparate; i++)
@@ -265,4 +257,13 @@ int Consola::cautare_joc_cumparat(string id)
         }
     }
     return -1;
+}
+
+void Consola::cumparare_bundle(Bundle &bundle)
+{
+    for (int i = 0; i < bundle.getNumarJocuri(); i++)
+    {
+        if (cautare_joc_cumparat(bundle.getJocuri()[i]->getId()) == -1)
+            cumparare_joc(*bundle.getJocuri()[i]);
+    }
 }
