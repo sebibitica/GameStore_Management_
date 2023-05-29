@@ -252,34 +252,74 @@ int main(int argc, char **argv)
     {
         if (strcmp(argv[1], "vizualizare_catalog") == 0)
         {
+            if (argc > 2)
+            {
+                cout << "comanda nu trebuie sa aiba argumente" << endl;
+                return 0;
+            }
             afisareCatalog(jocuri, numar_jocuri, bundles, numar_bundles);
         }
         else if (strcmp(argv[1], "cumparare_joc") == 0)
         {
+            if (argc < 3 || argc > 3)
+            {
+                cout << "comanda trebuie sa fie: cumparare_joc <id> " << endl;
+                return 0;
+            }
             cumparareJoc(jocuri, numar_jocuri, consola, argv[2]);
         }
         else if (strcmp(argv[1], "vizualizare_jocuri_cumparate") == 0)
         {
+            if (argc > 2)
+            {
+                cout << "comanda nu trebuie sa aiba argumente" << endl;
+                return 0;
+            }
             consola.vizualizare_jocuri_cumparate();
         }
         else if (strcmp(argv[1], "vizualizare_jocuri_instalate") == 0)
         {
+            if (argc > 2)
+            {
+                cout << "comanda nu trebuie sa aiba argumente" << endl;
+                return 0;
+            }
             consola.vizualizare_jocuri_instalate();
         }
         else if (strcmp(argv[1], "instalare_joc") == 0)
         {
+            if (argc < 3 || argc > 3)
+            {
+                cout << "comanda trebuie sa fie: instalare_joc <id> " << endl;
+                return 0;
+            }
             instalareJoc(jocuri, numar_jocuri, consola, argv[2]);
         }
         else if (strcmp(argv[1], "dezinstalare_joc") == 0)
         {
+            if (argc < 3 || argc > 3)
+            {
+                cout << "comanda trebuie sa fie: dezinstalare_joc <id> " << endl;
+                return 0;
+            }
             dezinstalareJoc(jocuri, numar_jocuri, consola, argv[2]);
         }
         else if (strcmp(argv[1], "cumparare_bundle") == 0)
         {
+            if (argc < 3 || argc > 3)
+            {
+                cout << "comanda trebuie sa fie: cumparare_bundle <id> " << endl;
+                return 0;
+            }
             cumparareBundle(bundles, numar_bundles, consola, argv[2]);
         }
         else if (strcmp(argv[1], "vizualizare_memorie") == 0)
         {
+            if (argc > 2)
+            {
+                cout << "comanda nu trebuie sa aiba argumente" << endl;
+                return 0;
+            }
             consola.vizualizare_memorie();
         }
     }

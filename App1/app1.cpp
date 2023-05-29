@@ -107,6 +107,11 @@ void stergereJoc(Joc *&jocuri, int &numar_jocuri, string id)
             index++;
         }
     }
+    if (index == numar_jocuri)
+    {
+        cout << "Nu exista jocul cu id-ul " << id << endl;
+        return;
+    }
     numar_jocuri--;
     delete[] jocuri;
     jocuri = jocuri_noi;
@@ -153,6 +158,11 @@ void stergereBundle(Bundle *&bundles, int &numar_bundles, string id)
             bundles_noi[index] = bundles[i];
             index++;
         }
+    }
+    if (index == numar_bundles)
+    {
+        cout << "Nu exista bundle-ul cu id-ul " << id << endl;
+        return;
     }
     numar_bundles--;
     delete[] bundles;
@@ -246,10 +256,20 @@ int main(int argc, char **argv)
     {
         if (strcmp(argv[1], "vizualizare_jocuri") == 0)
         {
+            if (argc > 2)
+            {
+                cout << "comanda nu trebuie sa aiba argumente" << endl;
+                return 0;
+            }
             vizualizareJocuri(jocuri, numar_jocuri);
         }
         else if (strcmp(argv[1], "adaugare_joc") == 0)
         {
+            if (argc < 7)
+            {
+                cout << "comanda trebuie sa fie: adaugare_joc <denumire> <categorie> <pret> <dimensiune> <nrCumparari>" << endl;
+                return 0;
+            }
             Joc joc;
             string id, denumire, categorie;
             double pret, dimensiune;
@@ -272,11 +292,21 @@ int main(int argc, char **argv)
         }
         else if (strcmp(argv[1], "stergere_joc") == 0)
         {
+            if (argc < 3 || argc > 3)
+            {
+                cout << "comanda trebuie sa fie: stergere_joc <id>" << endl;
+                return 0;
+            }
             string id = argv[2];
             stergereJoc(jocuri, numar_jocuri, id);
         }
         else if (strcmp(argv[1], "vizualizare_bundles") == 0)
         {
+            if (argc > 2)
+            {
+                cout << "comanda nu trebuie sa aiba argumente" << endl;
+                return 0;
+            }
             vizualizareBundles(bundles, numar_bundles);
         }
         else if (strcmp(argv[1], "adaugare_bundle") == 0)
@@ -293,6 +323,11 @@ int main(int argc, char **argv)
             bundle.setId(id);
             bundle.setPret(pret);
             bundle.setNumarJocuri(numarJocuri);
+            if (argc < 4 + numarJocuri || argc > 4 + numarJocuri)
+            {
+                cout << "comanda trebuie sa fie: adaugare_bundle <pret> <numar_jocuri> <list_cod_jocuri>" << endl;
+                return 0;
+            }
             Joc **jocuriBundle = new Joc *[numarJocuri];
             for (int i = 0; i < numarJocuri; i++)
             {
@@ -310,11 +345,21 @@ int main(int argc, char **argv)
         }
         else if (strcmp(argv[1], "stergere_bundle") == 0)
         {
+            if (argc < 3 || argc > 3)
+            {
+                cout << "comanda trebuie sa fie: stergere_bundle <id>" << endl;
+                return 0;
+            }
             string id = argv[2];
             stergereBundle(bundles, numar_bundles, id);
         }
         else if (strcmp(argv[1], "modificare_joc") == 0)
         {
+            if (argc < 5 || argc > 5)
+            {
+                cout << "comanda trebuie sa fie: modificare_joc <id> <camp_de_modificat> <valoarea_modificata>" << endl;
+                return 0;
+            }
             string id = argv[2];
             string camp_de_modificat = argv[3];
             string valoare = argv[4];
@@ -322,6 +367,11 @@ int main(int argc, char **argv)
         }
         else if (strcmp(argv[1], "vizualizare_cele_mai_cumparate_jocuri") == 0)
         {
+            if (argc > 2)
+            {
+                cout << "comanda nu trebuie sa aiba argumente" << endl;
+                return 0;
+            }
             topJocuri(jocuri, numar_jocuri);
         }
         else
